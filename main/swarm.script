@@ -29,9 +29,28 @@ function final(self)
 end
 
 function update(self, dt)
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
+	-- move invaders left and right
+	local move_down = false
+	for key,invader in ipairs(self.swarm_table) do
+		local pos = go.get_position(invader)
+		pos.x = (pos.x + self.direction * self.speed * dt)
+		go.set_position(pos, invader)
+
+		-- should invaders move down?
+		if pos.x >890 or pos.x < 60 then
+			move_down = true
+		end
+	end
+
+	-- move all invaders down if one had hit the edge of the screen
+	if move_down == true then
+		self.direction =-self.direction
+		for key,invader in ipairs(self.swarm_table) do
+			local pos = go.get_position(invader)
+			pos.y = pos.y - 20
+			go.set_position(pos, invader)
+		end
+	end
 end
 
 function on_message(self, message_id, message, sender)

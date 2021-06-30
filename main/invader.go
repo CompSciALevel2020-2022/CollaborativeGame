@@ -1,8 +1,8 @@
 embedded_components {
   id: "alien"
   type: "sprite"
-  data: "tile_set: \"\"\n"
-  "default_animation: \"\"\n"
+  data: "tile_set: \"/main/gaphics.atlas\"\n"
+  "default_animation: \"alien\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
